@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Symbolic Thangka Paintings Journal</title>
+<meta name="description" content="Contact the Symbolic Thangka Paintings Journal with questions or suggestions about symbolic thangka art, teaching paintings and Buddhist symbolism.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://saritabasnet1.github.io/symbolic-thangka-paintings/contact.html">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact — Symbolic Thangka Paintings Journal","url":"https://saritabasnet1.github.io/symbolic-thangka-paintings/contact.html","description":"Contact the Symbolic Thangka Paintings Journal with questions or suggestions."}</script>
+</head>
+<body>
+<header class="site-header">
+<p class="site-title"><a href="index.html">Symbolic Thangka Paintings Journal</a></p>
+<p class="tagline">Reading the teaching paintings of the Himalayas, one symbol at a time.</p>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="blog.html">Blog</a>
+<a href="contact.html">Contact</a>
+</nav>
+<main>
+<h1>Contact</h1>
+<figure>
+<svg role="img" aria-label="Envelope with a mandala seal, in gold, red and deep blue" width="320" height="200" viewBox="0 0 320 200"><rect x="10" y="10" width="300" height="180" fill="#fdf3d8" stroke="#7a3f14" stroke-width="3"/><rect x="70" y="60" width="180" height="100" fill="#fffaf0" stroke="#5c2e0e" stroke-width="3"/><path d="M70 60 L160 120 L250 60" fill="none" stroke="#5c2e0e" stroke-width="3"/><circle cx="160" cy="110" r="18" fill="#c99a3f" stroke="#5c2e0e" stroke-width="2"/></svg>
+<figcaption>Write to the journal: a message in an envelope.</figcaption>
+</figure>
+<p>Questions and suggestions are welcome. You can ask about a subject the journal has covered, suggest a subject it should explain next, or point out something that needs correction. This form does not send mail by itself: when you submit it, the page prepares a draft message below that you can copy or download and send yourself.</p>
+<p>Before writing, you may find an answer in the <a href="blog.html">Blog</a> or on the <a href="about.html">About</a> page.</p>
+<form class="contact-form" id="contact-form">
+<label for="name">Full Name</label>
+<input type="text" id="name" name="name" required>
+<label for="email">Email</label>
+<input type="email" id="email" name="email" required>
+<label for="subject">Subject (optional)</label>
+<input type="text" id="subject" name="subject">
+<label for="message">Message</label>
+<textarea id="message" name="message" rows="6" required></textarea>
+<button type="submit">Prepare Draft Message</button>
+</form>
+<div id="draft-output" hidden>
+<h2>Your Draft Message</h2>
+<p>Copy the text below, or download it as a file. This draft is prepared in your browser only and is not sent anywhere by this page.</p>
+<textarea id="draft-text" readonly></textarea>
+<p><button type="button" id="copy-draft">Copy Draft</button> <button type="button" id="download-draft">Download Draft</button></p>
+<p id="draft-status"></p>
+</div>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var subject = document.getElementById('subject').value.trim();
+  var message = document.getElementById('message').value.trim();
+  var draft = 'To: Symbolic Thangka Paintings Journal\n';
+  draft += 'From: ' + name + ' (' + email + ')\n';
+  if (subject) { draft += 'Subject: ' + subject + '\n'; }
+  draft += '\n' + message + '\n';
+  document.getElementById('draft-text').value = draft;
+  document.getElementById('draft-output').hidden = false;
+  document.getElementById('draft-status').textContent = 'Draft prepared. Copy it or download it below.';
+});
+document.getElementById('copy-draft').addEventListener('click', function () {
+  var t = document.getElementById('draft-text');
+  t.select();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t.value).then(function () {
+      document.getElementById('draft-status').textContent = 'Draft copied.';
+    });
+  } else {
+    document.execCommand('copy');
+    document.getElementById('draft-status').textContent = 'Draft copied.';
+  }
+});
+document.getElementById('download-draft').addEventListener('click', function () {
+  var text = document.getElementById('draft-text').value;
+  var blob = new Blob([text], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'message-to-symbolic-thangka-journal.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  document.getElementById('draft-status').textContent = 'Draft downloaded.';
+});
+</script>
+</main>
+<footer class="site-footer">
+<p>Symbolic Thangka Paintings Journal — an independent educational journal about symbolic thangka art.</p>
+<p><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="services.html">Services</a> | <a href="blog.html">Blog</a> | <a href="contact.html">Contact</a></p>
+</footer>
+</body>
+</html>

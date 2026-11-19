@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saritabasnet1.github.io/symbolic-thangka-paintings/sitemap.xml
